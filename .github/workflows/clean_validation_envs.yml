@@ -2,6 +2,7 @@
 name: Clean Validation Environments
 
 on:
+  push:
   schedule:
     # Every 2 hours
     - cron: "0 */2 * * *"
@@ -24,6 +25,13 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAIN_TRE_ID: ${{ secrets.TRE_ID }}
+          BRANCH_LAST_ACTIVITY_IN_HOURS: 4
 
       - name: Run clean
         env:

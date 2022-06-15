@@ -10,7 +10,7 @@ from tests_ma.test_api.conftest import create_admin_user
 from azure.core.exceptions import HttpResponseError
 
 from resources import strings
-from services.authentication import get_current_workspace_owner_or_researcher_user, get_current_workspace_owner_or_researcher_user_or_tre_admin
+from services.authentication import get_current_workspace_owner_or_researcher_user, get_current_workspace_owner_user
 
 
 pytestmark = pytest.mark.asyncio
@@ -73,12 +73,12 @@ def sample_workspace(workspace_id=WORKSPACE_ID, auth_info: dict = {}) -> Workspa
     return workspace
 
 
-class TestAirlockRoutesThatRequireOwnerOrResearcherRights():
+class TestWorkspaceServiceRoutesThatRequireOwnerRights:
     @pytest.fixture(autouse=True, scope='class')
-    def log_in_with_researcher_user(self, app, researcher_user):
+    def log_in_with_owner_user(self, app, owner_user):
         # The following ws services requires the WS app registration
-        app.dependency_overrides[get_current_workspace_owner_or_researcher_user_or_tre_admin] = researcher_user
-        app.dependency_overrides[get_current_workspace_owner_or_researcher_user] = researcher_user
+        app.dependency_overrides[get_current_workspace_owner_user] = owner_user
+        app.dependency_overrides[get_current_workspace_owner_or_researcher_user] = owner_user
         yield
         app.dependency_overrides = {}
 
@@ -146,8 +146,10 @@ class TestAirlockRoutesThatRequireOwnerOrResearcherRights():
         assert response.status_code == status.HTTP_503_SERVICE_UNAVAILABLE
 
 
-# TODO Submit Airlock Request
-# TODO  Submit Airlock Request fails becuase of saving the item
-# TODO Submit Airlock Request fails becuase of Eventgrid message publish failed
-# TODO Submit Airlock Request fails becuase already submitted
 
+
+    # # [POST] /workspaces/{workspace_id}/requests/{request_id}/submit
+    # async def test_post_airlock_request_submit_airlock_request(self, _, __, ___, ____, get_workspace_mock, app, client, sample_airlock_request_input_data):
+    # async def test_post_airlock_request_fails_on_update_item
+    # async def test_post_airlock_request_fails_on_eventgrid_publish_message
+    #  async def test_post_airlock_request_fails_on_already_submitted

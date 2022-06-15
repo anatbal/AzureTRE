@@ -37,8 +37,6 @@ class AirlockRequestRepository(AirlockResourceRepository):
     def create_airlock_request_item(self, airlock_request_input: AirlockRequestInCreate, workspace_id: str) -> AirlockRequest:
         full_airlock_request_id = str(uuid.uuid4())
 
-        # TODO - validate the request https://github.com/microsoft/AzureTRE/issues/2016
-
         airlock_request = AirlockRequest(
             id=full_airlock_request_id,
             workspaceId=workspace_id,

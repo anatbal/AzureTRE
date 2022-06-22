@@ -3,8 +3,8 @@ from mock import patch, MagicMock
 import pytest
 from tests_ma.test_api.conftest import create_test_user
 from models.schemas.airlock_request import AirlockRequestInCreate
-from models.domain.airlock_resource import AirlockRequestStatus, AirlockResourceType
-from models.domain.airlock_request import AirlockRequest, AirlockRequestType
+from models.domain.airlock_resource import AirlockResourceType
+from models.domain.airlock_request import AirlockRequest, AirlockRequestStatus, AirlockRequestType
 from db.repositories.airlock_requests import AirlockRequestRepository
 
 from db.errors import EntityDoesNotExist

@@ -15,8 +15,8 @@ pytestmark = pytest.mark.asyncio
 
 
 WORKSPACE_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
-AIRLOCK_REQUEST_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
-AIRLOCK_REVIEW_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
+AIRLOCK_REQUEST_ID = "5dbc15ae-40e1-49a5-834b-595f59d626b7"
+AIRLOCK_REVIEW_ID = "96d909c5-e913-4c05-ae53-668a702ba2e5"
 
 
 @pytest.fixture

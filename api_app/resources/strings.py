@@ -60,9 +60,6 @@ API_GET_WORKSPACE_COSTS = "Get workspace costs"
 API_GET_COSTS_MAX_TIME_PERIOD = "The time period for pulling the data cannot exceed 1 year"
 API_GET_COSTS_TO_DATE_NEED_TO_BE_LATER_THEN_FROM_DATE = "to_date needs to be later than from_date"
 
-API_CREATE_AIRLOCK_REQUEST = "Create an airlock request"
-API_SUBMIT_AIRLOCK_REQUEST = "Submit an airlock request"
-
 # State store status
 OK = "OK"
 NOT_OK = "Not OK"

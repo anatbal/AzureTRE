@@ -7,8 +7,8 @@ from models.schemas.airlock_review import AirlockReviewInCreate
 from models.domain.airlock_resource import AirlockResourceType
 
 WORKSPACE_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
-AIRLOCK_REQUEST_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
-AIRLOCK_REVIEW_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
+AIRLOCK_REQUEST_ID = "bbc8cae3-588b-4c7d-b27c-2a5feb7cc646"
+AIRLOCK_REVIEW_ID = "76709e9f-5e86-4328-abb1-55d0a380f11e"
 
 
 @pytest.fixture

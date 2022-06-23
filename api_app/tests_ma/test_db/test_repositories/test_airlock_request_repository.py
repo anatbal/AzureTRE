@@ -11,7 +11,7 @@ from db.errors import EntityDoesNotExist
 
 
 WORKSPACE_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
-AIRLOCK_REQUEST_ID = "abc000d3-82da-4bfc-b6e9-9a7853ef753e"
+AIRLOCK_REQUEST_ID = "ce45d43a-e734-469a-88a0-109faf4a611f"
 
 
 @pytest.fixture

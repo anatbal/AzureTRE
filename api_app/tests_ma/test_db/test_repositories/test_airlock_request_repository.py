@@ -34,7 +34,7 @@ def airlock_request_mock():
 
 
 @pytest.fixture
-def basic_airlock_request():
+def sample_airlock_request_input():
     return AirlockRequestInCreate(requestType=AirlockRequestType.Import, businessJustification="Some business justification")
 
 
@@ -54,8 +54,8 @@ def test_get_airlock_request_by_id_raises_entity_does_not_exist_if_no_available_
         airlock_request_repo.get_airlock_request_by_id(AIRLOCK_REQUEST_ID)
 
 
-def test_create_airlock_request_item_creates_an_airlock_request_with_the_right_values(basic_airlock_request, airlock_request_repo):
-    airlock_request_item_to_create = basic_airlock_request
+def test_create_airlock_request_item_creates_an_airlock_request_with_the_right_values(sample_airlock_request_input, airlock_request_repo):
+    airlock_request_item_to_create = sample_airlock_request_input
     airlock_request = airlock_request_repo.create_airlock_request_item(airlock_request_item_to_create, WORKSPACE_ID)
 
     assert airlock_request.resourceType == AirlockResourceType.AirlockRequest

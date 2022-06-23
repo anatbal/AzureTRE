@@ -3,6 +3,8 @@ data "azurerm_private_dns_zone" "eventgrid" {
   resource_group_name = var.resource_group_name
 }
 
+# Below we assign a SYSTEM-assigned identity for the topics. note that a user-assigned identity will not work.
+
 # Event grid topics
 resource "azurerm_eventgrid_topic" "step_result" {
   name                          = local.step_result_topic_name
@@ -257,7 +259,8 @@ resource "azurerm_eventgrid_event_subscription" "step_result" {
   }
 
   depends_on = [
-    azurerm_eventgrid_topic.step_result
+    azurerm_eventgrid_topic.step_result,
+    azurerm_role_assignment.servicebus_sender_step_result
   ]
 }
 
@@ -272,7 +275,8 @@ resource "azurerm_eventgrid_event_subscription" "status_changed" {
   }
 
   depends_on = [
-    azurerm_eventgrid_topic.status_changed
+    azurerm_eventgrid_topic.status_changed,
+    azurerm_role_assignment.servicebus_sender_status_changed
   ]
 }
 
@@ -287,7 +291,8 @@ resource "azurerm_eventgrid_event_subscription" "import_inprogress_blob_created"
   }
 
   depends_on = [
-    azurerm_eventgrid_system_topic.import_inprogress_blob_created
+    azurerm_eventgrid_system_topic.import_inprogress_blob_created,
+    azurerm_role_assignment.servicebus_sender_import_inprogress_blob_created
   ]
 }
 
@@ -304,7 +309,8 @@ resource "azurerm_eventgrid_event_subscription" "import_rejected_blob_created" {
   # Todo add Dead_letter
 
   depends_on = [
-    azurerm_eventgrid_system_topic.import_rejected_blob_created
+    azurerm_eventgrid_system_topic.import_rejected_blob_created,
+    azurerm_role_assignment.servicebus_sender_import_rejected_blob_created
   ]
 }
 
@@ -319,7 +325,8 @@ resource "azurerm_eventgrid_event_subscription" "export_approved_blob_created" {
   }
 
   depends_on = [
-    azurerm_eventgrid_system_topic.export_approved_blob_created
+    azurerm_eventgrid_system_topic.export_approved_blob_created,
+    azurerm_role_assignment.servicebus_sender_export_approved_blob_created
   ]
 }
 
